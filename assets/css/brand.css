@@ -1,0 +1,149 @@
+/* HOCCO brand layer: tokens from hocco.in (real Gliker and Matahari files) plus the bespoke landing scene.
+   Light, pastel, navy-outlined world; no dark theme for this brand. */
+@import url("../fonts/fonts.css");
+:root{
+  color-scheme:light;
+  --navy:#2C2B7E; --red:#E8194F; --cream:#FDF7E8; --pink:#FFCCEF; --sky:#DAEFFD; --peach:#FFEECE; --lav:#EBDEFF; --mint:#D8F2C0; --butter:#F7CC5F;
+  --bg:var(--cream); --surface:#FFFFFF; --ink:var(--navy); --muted:#5B5A93; --line:#D9D3EE;
+  --accent:var(--red); --accent-ink:#FFFFFF; --accent-deep:#C5103F;
+  --soft-1:var(--pink); --soft-2:var(--sky); --soft-3:var(--peach); --soft-4:var(--mint);
+  --ev-fact:#D8F2C0; --ev-fact-ink:#1F5A1A; --ev-third:#DAEFFD; --ev-third-ink:#1C4D7A; --ev-assume:#FFE3A3; --ev-assume-ink:#7A4B00; --ev-calc:#EBDEFF; --ev-calc-ink:#4B2C8F;
+  --f-display:"Gliker SE","HoccoRupee","Matahari",system-ui,sans-serif;
+  --f-cond:"Gliker BC","HoccoRupee","Matahari",system-ui,sans-serif;
+  --f-body:"Matahari","HoccoRupee",system-ui,-apple-system,sans-serif;
+  --r:20px;
+}
+
+/* ================= LANDING (bespoke for HOCCO) ================= */
+html[data-page="landing"],html[data-page="landing"] body{height:100%;overflow:hidden}
+.landing{position:relative;height:100vh;height:100dvh;min-height:0;overflow:hidden;background:
+  radial-gradient(120% 80% at 80% 10%, #FFFFFF 0%, transparent 45%),
+  linear-gradient(170deg, var(--sky) 0%, #EAE6FF 48%, var(--pink) 100%)}
+.landing-grid{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);align-items:center;gap:24px;padding-top:calc(64px + env(safe-area-inset-top,0px));padding-bottom:max(56px,env(safe-area-inset-bottom,0px))}
+.hook{position:relative;z-index:5;max-width:660px}
+.badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.7);border:2px solid var(--navy);border-radius:999px;padding:8px 14px 8px 8px;font:700 12.5px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase}
+.badge img{width:44px;height:auto}
+.hook h1{font:400 clamp(30px,3.5vw,52px)/1.04 var(--f-display);letter-spacing:-.01em;margin:22px 0 18px;color:var(--navy)}
+.hook h1 .num{white-space:nowrap}
+.hook h1 em{display:block;font-style:normal;color:var(--red);margin-top:.12em}
+.hook h1 .pop-wrap button.est{font-size:12px;vertical-align:.9em}
+.hook h1 .pop{font-size:14.5px}
+.hook .sub{font-size:clamp(16px,1.35vw,19px);line-height:1.5;max-width:52ch;margin:0 0 26px}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.cta-row .btn--primary svg{transition:transform .2s}
+.cta-row .btn--primary:hover svg{transform:translateX(3px)}
+.planby{position:absolute;z-index:6;left:max(16px,calc((100% - 1160px)/2));bottom:max(16px,env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.82);border:2px solid var(--navy);border-radius:999px;padding:5px 16px 5px 5px;text-decoration:none;box-shadow:3px 3px 0 var(--navy)}
+.planby img{width:40px;height:40px;border-radius:50%;border:2px solid var(--navy)}
+.planby b{display:block;font-size:14px;line-height:1.15}
+.planby small{display:block;font-size:12px;color:var(--muted);line-height:1.2}
+.concept{position:absolute;z-index:6;right:max(16px,calc((100% - 1160px)/2));bottom:max(22px,env(safe-area-inset-bottom,0px));font-size:11.5px;color:var(--muted);max-width:330px;text-align:right;line-height:1.35}
+
+/* the scene */
+.scene{position:relative;height:100%;min-height:0;perspective:1200px}
+.scene .lyr{position:absolute;inset:0;transform:translate3d(calc(var(--px,0)*var(--d,0)*1px),calc(var(--py,0)*var(--d,0)*1px),0);transition:transform .25s ease-out;will-change:transform}
+.scene img{position:absolute;user-select:none;-webkit-user-drag:none}
+.island{position:absolute;left:8%;right:4%;bottom:6%;height:20%}
+.island svg{width:100%;height:100%;overflow:visible}
+.p-hero{height:64%;left:50%;bottom:13%;transform:translateX(-50%) rotate(-3deg);filter:drop-shadow(0 30px 28px rgba(44,43,126,.28))}
+.p-tub{width:40%;left:0;bottom:13%;transform:rotate(-6deg);filter:drop-shadow(0 18px 18px rgba(44,43,126,.22))}
+.p-stick{width:42%;right:-8%;bottom:20%;transform:rotate(-16deg);filter:drop-shadow(0 18px 18px rgba(44,43,126,.22))}
+.p-back1{height:30%;left:6%;top:12%;transform:rotate(-12deg);filter:blur(2.5px) saturate(.9);opacity:.92}
+.p-back2{height:27%;right:2%;top:6%;transform:rotate(10deg);filter:blur(3.5px) saturate(.9);opacity:.85}
+.ing{width:var(--s,72px);left:var(--x);top:var(--y);filter:drop-shadow(0 10px 10px rgba(44,43,126,.25)) var(--blur,blur(0));animation:bob var(--t,6s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+@keyframes bob{0%,100%{translate:0 0;rotate:var(--r0,0deg)}50%{translate:0 -14px;rotate:calc(var(--r0,0deg) + 14deg)}}
+.cloud{position:absolute;opacity:.95;animation:drift 38s linear infinite alternate}
+@keyframes drift{from{translate:-18px 0}to{translate:22px 0}}
+.sticker{position:absolute;right:16%;top:22%;width:clamp(86px,9vw,126px);aspect-ratio:1;border-radius:50%;background:var(--red);color:#fff;border:3px solid var(--cream);box-shadow:0 0 0 2.5px var(--navy),5px 5px 0 2.5px var(--navy);display:grid;place-items:center;text-align:center;transform:rotate(-12deg)}
+.sticker b{display:block;font:400 clamp(28px,3vw,42px)/.9 var(--f-display)}
+.sticker span{display:block;font:800 clamp(9px,.8vw,11.5px)/1 var(--f-body);letter-spacing:.12em}
+.budd{position:absolute;width:20%;right:6%;bottom:2%;filter:drop-shadow(0 8px 10px rgba(44,43,126,.2))}
+.ace{position:absolute;width:13%;left:30%;top:2%;filter:drop-shadow(0 8px 10px rgba(44,43,126,.2))}
+
+/* entrance: one orchestrated drop, then ambient motion only */
+@media (prefers-reduced-motion:no-preference){
+  .js .hook>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .js .hook>*:nth-child(2){animation-delay:.08s}.js .hook>*:nth-child(3){animation-delay:.16s}.js .hook>*:nth-child(4){animation-delay:.26s}
+  .js .scene .drop{animation:drop .9s cubic-bezier(.3,1.5,.5,1) both;animation-delay:var(--in,.2s)}
+  .js .planby{animation:rise .7s .5s cubic-bezier(.2,.7,.2,1) both}
+}
+@keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+/* the hook text is never invisible: it only lifts, so a slow or throttled tab still shows the headline at once */
+@keyframes drop{from{opacity:0;translate:0 -60px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.ing,.cloud{animation:none}.scene .lyr{transition:none;transform:none}}
+
+/* landing, tablet and phone: text first, scene fills what is left, nothing scrolls */
+@media (max-width:900px){
+  .landing-grid{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);align-items:start;gap:0;padding-bottom:64px}
+  .hook{padding-top:clamp(8px,2.5vh,28px)}
+  .hook h1{font-size:clamp(25px,7.2vw,44px);margin:12px 0 10px}
+  .hook .sub{font-size:15px;margin-bottom:16px}
+  .badge{padding:6px 12px 6px 6px;font-size:11px}.badge img{width:36px}
+  .scene{margin-inline:-16px}
+  .p-hero{height:80%;bottom:8%}
+  .p-tub{width:34%;left:3%;bottom:8%}
+  .p-stick{width:38%;right:-2%;bottom:30%}
+  .p-back1,.p-back2,.ace{display:none}
+  .sticker{right:8%;top:6%;width:74px}.sticker b{font-size:25px}.sticker span{font-size:8.5px}
+  .budd{width:17%;right:3%;bottom:0}
+  .concept{display:none}
+  .planby{bottom:max(12px,env(safe-area-inset-bottom,0px));padding-right:12px}
+  .planby img{width:34px;height:34px}.planby b{font-size:13px}.planby small{font-size:11px}
+  .ing.far{display:none}
+}
+@media (max-width:900px) and (max-height:700px){
+  .hook .sub{font-size:14.5px;line-height:1.45;margin-bottom:12px}
+  .badge{margin-top:0}
+  .hook h1{font-size:clamp(23px,6.4vw,34px)}
+  .cta-row .btn{min-height:44px;padding:10px 18px;font-size:15px}
+}
+@media (min-width:901px) and (max-height:760px){
+  .hook h1{font-size:clamp(28px,3vw,44px)}
+  .hook .sub{margin-bottom:18px}
+}
+
+/* ================= plan / builder / talk accents ================= */
+.plan-hero{background:linear-gradient(180deg,var(--pink) 0%,var(--cream) 100%)}
+.builder-hero{background:linear-gradient(180deg,var(--peach) 0%,var(--cream) 100%)}
+.talk-bg{background:linear-gradient(180deg,var(--sky) 0%,var(--cream) 100%)}
+.ch-visual .island-card{background:var(--sky)}
+.seg-card{border-radius:var(--r);border:2.5px solid var(--navy);padding:18px;box-shadow:5px 5px 0 var(--navy)}
+.seg-card h3{font:400 21px/1.15 var(--f-display);margin:8px 0 6px}
+.seg-card .q{font:400 16px/1.35 var(--f-display);color:var(--red);margin-top:10px}
+.seg-card .k{font:700 11.5px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.packs-row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:center;padding:26px 10px 8px;background:linear-gradient(180deg,#fff 0%,var(--sky) 100%);border-radius:16px}
+.packs-row img{height:auto;filter:drop-shadow(0 14px 14px rgba(44,43,126,.2))}
+.pack-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;min-width:0}
+.pack-card .nm{font:400 17px/1.15 var(--f-display)}
+.pack-card .meta{font-size:13.5px;color:var(--muted)}
+.pack-card .role{font-size:14px;max-width:24ch}
+.tabbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tabbar [role="tab"]{border:2px solid var(--navy);background:var(--surface);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14.5px;cursor:pointer}
+.tabbar [role="tab"][aria-selected="true"]{background:var(--navy);color:#fff}
+.gate{display:flex;flex-direction:column;gap:6px}
+.gate .h{display:flex;align-items:center;gap:10px}
+.gate .h b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--butter);border:2px solid var(--navy);font:400 15px/1 var(--f-display);flex:none}
+.gate .h span{font:400 19px/1.15 var(--f-display)}
+.gate .bar{font-size:14.5px}
+.gate .bar strong{color:var(--accent-deep)}
+.gate .kill{font-size:13.5px;color:var(--muted)}
+.waves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.wave{border-radius:var(--r);border:2.5px solid var(--navy);padding:18px;background:var(--surface)}
+.wave:nth-child(1){background:var(--mint)}.wave:nth-child(2){background:var(--butter)}.wave:nth-child(3){background:var(--pink)}
+.wave .k{font:700 11.5px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase}
+.wave h3{font:400 22px/1.1 var(--f-display);margin:8px 0}
+.wave ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}
+.wave .gate-out{margin-top:12px;padding-top:10px;border-top:2px dashed rgba(44,43,126,.35);font-size:13.5px}
+@media (max-width:860px){.waves{grid-template-columns:1fr}}
+.creator{display:flex;flex-direction:column;gap:6px}
+.creator .k{font:700 11.5px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.creator h3{font:400 19px/1.15 var(--f-display);margin:2px 0}
+.creator p{font-size:14.5px;margin:0}
+.shelf td:first-child{font-weight:700;white-space:nowrap}
+.shelf tr.us td{background:var(--pink)}
+.risk-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.risk-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:12px 16px}
+.risk-list .lvl{font:700 11.5px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:6px;background:var(--peach);align-self:start;white-space:nowrap}
+.risk-list .mit{grid-column:1 / -1;font-size:14.5px;color:var(--muted)}
+.ev-self{background:#EFEAF9;color:#4B4A80}
+.planby .m-only{display:none}
+@media (max-width:900px){.planby .d-only{display:none}.planby .m-only{display:block}}

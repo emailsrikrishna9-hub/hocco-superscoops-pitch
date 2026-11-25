@@ -1,0 +1,36 @@
+/* HOCCO's own typefaces, as served on hocco.in (commercial; bundled for local viewing only, see README).
+   Each Gliker cut is a single weight, so it is declared at 400 to stop the browser from faux-bolding it.
+   The HOCCO fonts have no rupee sign, so "HoccoRupee" (Inter 600, OFL) is limited to U+20B9 and sits
+   second in every stack: only the rupee glyph ever comes from it. */
+
+@font-face {
+  font-family: "HoccoRupee";
+  src: url("inter-latin-ext-600-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+20B9;
+}
+@font-face {
+  font-family: "Gliker SE";
+  src: url("gliker-bold-semi-expanded.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Gliker BC";
+  src: url("gliker-black-condensed.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Matahari";
+  src: url("Matahari-400Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Matahari";
+  src: url("Matahari-600SemiBold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Matahari";
+  src: url("Matahari-800ExtraBold.woff2") format("woff2");
+  font-weight: 800; font-style: normal; font-display: swap;
+}
